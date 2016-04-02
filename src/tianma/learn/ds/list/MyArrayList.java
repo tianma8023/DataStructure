@@ -4,6 +4,10 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
+/**
+ * 
+ * @author Tianma
+ */
 public class MyArrayList<E> implements MyList<E> {
 
 	private Object[] elementData;

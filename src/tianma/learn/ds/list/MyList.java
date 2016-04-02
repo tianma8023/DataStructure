@@ -1,5 +1,10 @@
 package tianma.learn.ds.list;
 
+/**
+ * 
+ * @author Tianma
+ *
+ */
 public interface MyList<E> extends Iterable<E> {
 
 	/**
