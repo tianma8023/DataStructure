@@ -177,7 +177,7 @@ public class MyLinkedList<E> implements MyList<E> {
 
 	@Override
 	public E removeAt(int index) {
-		if (index > size || index < 0)
+		if (index >= size || index < 0)
 			throw new IndexOutOfBoundsException(outOfBoundsMsg(index));
 		Node<E> tmp = head;
 		for (int i = 0; i < index; i++) {
