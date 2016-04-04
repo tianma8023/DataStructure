@@ -1,4 +1,4 @@
-package tianma.learn.ds.list;
+package tianma.learn.ds.lineartable;
 
 import java.util.Arrays;
 import java.util.Iterator;

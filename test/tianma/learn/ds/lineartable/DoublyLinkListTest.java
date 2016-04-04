@@ -1,4 +1,6 @@
-package tianma.learn.ds.list;
+package tianma.learn.ds.lineartable;
+
+import tianma.learn.ds.lineartable.MyDoublyList;
 
 public class DoublyLinkListTest {
 

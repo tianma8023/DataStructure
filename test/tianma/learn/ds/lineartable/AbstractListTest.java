@@ -1,10 +1,12 @@
-package tianma.learn.ds.list;
+package tianma.learn.ds.lineartable;
 
 import java.util.Iterator;
 
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+
+import tianma.learn.ds.lineartable.MyList;
 
 abstract public class AbstractListTest {
 

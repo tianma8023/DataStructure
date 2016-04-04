@@ -1,4 +1,7 @@
-package tianma.learn.ds.list;
+package tianma.learn.ds.lineartable;
+
+import tianma.learn.ds.lineartable.MyArrayList;
+import tianma.learn.ds.lineartable.MyList;
 
 public class ArrayListTest extends AbstractListTest{
 

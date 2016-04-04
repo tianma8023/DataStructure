@@ -1,4 +1,4 @@
-package tianma.learn.ds.list;
+package tianma.learn.ds.lineartable;
 
 /**
  * 
