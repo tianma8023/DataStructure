@@ -64,7 +64,8 @@ public class MyArrayList<E> implements MyList<E> {
 
 	private void grow(int minCapacity) {
 		int oldCapacity = elementData.length;
-		int newCapacity = oldCapacity + oldCapacity >> 1;
+		// + 优先级大于 >>
+		int newCapacity = oldCapacity + (oldCapacity >> 1);
 		newCapacity = Math.max(newCapacity, minCapacity);
 		if (newCapacity > MAX_ARRAY_SIZE) {
 			if (minCapacity < 0)

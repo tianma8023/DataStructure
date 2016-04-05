@@ -79,7 +79,7 @@ public class MyArrayStack<E> implements MyStack<E> {
 
 	private void grow(int minCapacity) {
 		int oldCapacity = elementData.length;
-		int newCapacity = oldCapacity + oldCapacity >> 1;
+		int newCapacity = oldCapacity + (oldCapacity >> 1);
 		newCapacity = Math.max(minCapacity, oldCapacity);
 		if (newCapacity > MAX_ARRAY_SIZE) {
 			if (minCapacity < 0)
