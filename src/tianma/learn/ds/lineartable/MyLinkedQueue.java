@@ -94,6 +94,10 @@ public class MyLinkedQueue<E> implements MyQueue<E> {
 		}
 		Node<E> tmp = front.next;
 		front.next = front.next.next;
+		if (tmp == rear) {
+			// 如果对头是队尾,也就是当前队列只剩下一个元素
+			rear = front;
+		}
 		E value = tmp.element;
 		tmp.next = null;
 		tmp = null;
@@ -105,7 +109,7 @@ public class MyLinkedQueue<E> implements MyQueue<E> {
 	public int size() {
 		return size;
 	}
-	
+
 	@Override
 	public String toString() {
 		Iterator<E> it = iterator();
