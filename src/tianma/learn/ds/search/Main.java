@@ -21,6 +21,9 @@ public class Main {
 		// 插值查找
 		InterpolateSearcher is = new InterpolateSearcher();
 		System.out.println("interpolate search: " + is.search(array, key));
+		// 斐波那契查找
+		FibonacciSearcher fs = new FibonacciSearcher();
+		System.out.println("fibonacci search: " + fs.search(array, key));
 
 	}
 
