@@ -89,11 +89,10 @@ public class BinaryTree implements Tree<Character> {
 		}
 		if(!nodeList.isEmpty()){
 			root = nodeList.get(0);
-			System.out.println(root);
 		}
 	}
 
-	protected void checkList(MyList<Character> list) {
+	private void checkList(MyList<Character> list) {
 		if (list == null)
 			throw new NullPointerException("MyList cannot be null");
 	}
@@ -106,7 +105,7 @@ public class BinaryTree implements Tree<Character> {
 	}
 	
 
-	protected void preOrderTraverse(TreeNode<Character> curNode, MyList<Character> list) {
+	private void preOrderTraverse(TreeNode<Character> curNode, MyList<Character> list) {
 		checkList(list);
 		if (curNode == null)
 			return;
@@ -123,7 +122,7 @@ public class BinaryTree implements Tree<Character> {
 		return inList;
 	}
 	
-	protected void inOrderTraverse(TreeNode<Character> curNode, MyList<Character> list) {
+	private void inOrderTraverse(TreeNode<Character> curNode, MyList<Character> list) {
 		checkList(list);
 		if (curNode == null)
 			return ;
@@ -140,7 +139,7 @@ public class BinaryTree implements Tree<Character> {
 		return postList;
 	}
 	
-	protected void postOrderTraverse(TreeNode<Character> curNode, MyList<Character> list) {
+	private void postOrderTraverse(TreeNode<Character> curNode, MyList<Character> list) {
 		checkList(list);
 		if (curNode == null)
 			return ;
@@ -153,9 +152,9 @@ public class BinaryTree implements Tree<Character> {
 	public static void main(String[] args) {
 		String initTreeStr = "ABD#CE";
 		BinaryTree tree = new BinaryTree(initTreeStr);
-		System.out.println(tree.preOrderTraverse());
-		System.out.println(tree.inOrderTraverse());
-		System.out.println(tree.postOrderTraverse());
+		System.out.println("preOrder:  " + tree.preOrderTraverse());
+		System.out.println("inOrder:   " + tree.inOrderTraverse());
+		System.out.println("postOrder: " + tree.postOrderTraverse());
 	}
 
 }
