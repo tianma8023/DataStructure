@@ -40,10 +40,6 @@ public class SimpleCalcutor {
 			throw new NumberFormatException();
 		}
 
-		// public boolean isOperator() {
-		// return !isNumber();
-		// }
-
 		public boolean isAdd() {
 			return "+".equals(value);
 		}
@@ -77,40 +73,8 @@ public class SimpleCalcutor {
 		}
 
 		@Override
-		public int hashCode() {
-			final int prime = 31;
-			int result = 1;
-			result = prime * result + getOuterType().hashCode();
-			result = prime * result + ((value == null) ? 0 : value.hashCode());
-			return result;
-		}
-
-		@Override
-		public boolean equals(Object obj) {
-			if (this == obj)
-				return true;
-			if (obj == null)
-				return false;
-			if (getClass() != obj.getClass())
-				return false;
-			Item other = (Item) obj;
-			if (!getOuterType().equals(other.getOuterType()))
-				return false;
-			if (value == null) {
-				if (other.value != null)
-					return false;
-			} else if (!value.equals(other.value))
-				return false;
-			return true;
-		}
-
-		@Override
 		public String toString() {
 			return value != null ? value.toString() : null;
-		}
-
-		private SimpleCalcutor getOuterType() {
-			return SimpleCalcutor.this;
 		}
 
 	}
@@ -146,10 +110,10 @@ public class SimpleCalcutor {
 	/**
 	 * 中缀表达式转换为后缀表达式
 	 * <p>
-	 * 1.当读到一个操作数时，立即将它放到输出中。操作符则不立即输出，放入栈中。遇到左圆括号也推入栈中。<br>
-	 * 2.如果遇到一个右括号，那么就将栈元素弹出，将符号写出直到遇到一个对应的左括号。但是这个左括号只被弹出，并不输出。<br>
-	 * 3.在读到操作符时，如果此操作符优先级小于或等于此时栈顶操作符，弹出栈顶操作符直到发现优先级更低的元素位置或者左括号。除了处理）的时候，
-	 * 否则决不从栈中移走"（"。操作符中，+-优先级最低，（）优先级最高。 <br>
+	 * 1.当读到一个操作数时，立即将它放到输出中。读到的是操作符则需要接着判断是否该入栈。读到的是左圆括号则入栈。<br>
+	 * 2.如果遇到一个右括号，那么就将栈中元素弹出并输出直至遇到左括号为止。但是这个左括号只被弹出，并不输出。<br>
+	 * 3.在读到操作符时，如果此操作符优先级小于或等于此时栈顶操作符，则将栈中元素弹出直至(1)遇到左括号或者(2)栈顶元素为更低优先级或者(3)
+	 * 栈为空为止。操作符中，'+''-'优先级最低，'('')'优先级最高。 <br>
 	 * 4.如果读到输入的末尾，将栈元素弹出直到该栈变成空栈，将符号写到输出中。
 	 * 
 	 * @return
