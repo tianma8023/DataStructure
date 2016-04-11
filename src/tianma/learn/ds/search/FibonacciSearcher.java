@@ -60,10 +60,10 @@ public class FibonacciSearcher implements Searcher {
 
 		// 开始进行类似于二分查找的查找
 		while (low <= high) {
-			// 对于tmp数组,整个数组的长度为fib[k]
-			// 而 fib[k] = fib[k - 1] + fib[k - 2];
-			// 所以可以这样理解： 可以将整个数组拆分为两部分,第1部分有fib[k-1]个元素,第2部分有fib[k-2]个元素
-			// mid = low + fib[k - 1] - 1; 正是将 数组的[low, max(high,tmp.length-1)]
+			// 对于tmp数组,整个数组的长度为fib[k]-1
+			// 而 fib[k]-1 = (fib[k-1]-1) + 1 + (fib[k-2]-1);
+			// 所以可以这样理解： mid下标对应元素可以将整个数组拆分为两部分,第1部分有fib[k-1]-1个元素,第2部分有fib[k-2]-1个元素
+			// mid=low+fib[k-1]-1; 正是将 数组的[low, max(high,tmp.length-1)]
 			// 部分按照斐波那契规则分为两部分
 			mid = low + fib[k - 1] - 1;
 			if (tmp[mid] > key) {
