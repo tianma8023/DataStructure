@@ -33,7 +33,7 @@ public class SorterTester {
 			Sorter sorter = sorters.get(i);
 			String descrip = descrips.get(i);
 			System.out.println(descrip + " :");
-			sorter.sort(tmp);
+			tmp = sorter.sort(tmp);
 			System.out.println(Arrays.toString(tmp));
 		}
 

@@ -11,6 +11,8 @@ public class SorterMain {
 		tester.addSorter(new InsertSorter(), "InsertSort");
 		tester.addSorter(new ShellSorter(), "ShellSort");
 		tester.addSorter(new HeapSort(), "HeapSort");
+		tester.addSorter(new MergeSorter(), "MergeSort");
+		tester.addSorter(new NonRecursiveMergeSorter(), "NonRecursiveMergeSort");
 		tester.print(arr);
 	}
 
