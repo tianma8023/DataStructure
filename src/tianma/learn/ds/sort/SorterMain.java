@@ -10,6 +10,7 @@ public class SorterMain {
 		tester.addSorter(new SelectionSorter(), "SelectionSort");
 		tester.addSorter(new InsertSorter(), "InsertSort");
 		tester.addSorter(new ShellSorter(), "ShellSort");
+		tester.addSorter(new HeapSort(), "HeapSort");
 		tester.print(arr);
 	}
 

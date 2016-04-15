@@ -25,6 +25,7 @@ public class SorterTester {
 	}
 
 	public void print(int[] arr) {
+		System.out.println("Source Array : \n" + Arrays.toString(arr));
 		for (int i = 0; i < sorters.size(); i++) {
 			int len = arr.length;
 			int[] tmp = new int[len];
