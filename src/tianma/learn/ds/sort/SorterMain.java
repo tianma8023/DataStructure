@@ -14,6 +14,7 @@ public class SorterMain {
 		tester.addSorter(new MergeSorter(), "MergeSort");
 		tester.addSorter(new NonRecursiveMergeSorter(), "NonRecursiveMergeSort");
 		tester.addSorter(new QuickSorter(), "QuickSort");
+		tester.addSorter(new OptimizedQuickSorter(), "OptimizedQuickSort");
 		tester.print(arr);
 	}
 
