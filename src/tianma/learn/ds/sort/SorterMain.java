@@ -13,6 +13,7 @@ public class SorterMain {
 		tester.addSorter(new HeapSort(), "HeapSort");
 		tester.addSorter(new MergeSorter(), "MergeSort");
 		tester.addSorter(new NonRecursiveMergeSorter(), "NonRecursiveMergeSort");
+		tester.addSorter(new QuickSorter(), "QuickSort");
 		tester.print(arr);
 	}
 
