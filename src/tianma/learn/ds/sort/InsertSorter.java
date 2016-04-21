@@ -12,6 +12,11 @@ public class InsertSorter implements Sorter {
 
 	@Override
 	public int[] sort(int[] arr) {
+		insertSort(arr);
+		return arr;
+	}
+
+	private void insertSort(int[] arr) {
 		int len = arr.length;
 		int i, j;
 		int tmp;
@@ -25,7 +30,6 @@ public class InsertSorter implements Sorter {
 				arr[j + 1] = tmp; // 插入正确位置
 			}
 		}
-		return arr;
 	}
 
 }

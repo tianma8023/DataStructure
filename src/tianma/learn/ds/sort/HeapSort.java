@@ -17,6 +17,11 @@ public class HeapSort implements Sorter {
 
 	@Override
 	public int[] sort(int[] arr) {
+		heapSort(arr);
+		return arr;
+	}
+
+	private void heapSort(int[] arr) {
 		int len = arr.length;
 		int i;
 		// 将当前序列构成最大堆
@@ -30,7 +35,6 @@ public class HeapSort implements Sorter {
 			swap(arr, 0, i); // 将堆顶元素和当前未经排序的子序列的最后一个元素进行交换
 			adjustHeap(arr, 0, i - 1); // 将arr[0...i-1](前i个元素)重新调整为最大堆
 		}
-		return arr;
 	}
 
 	/**

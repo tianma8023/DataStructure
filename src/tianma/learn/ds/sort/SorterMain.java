@@ -1,5 +1,7 @@
 package tianma.learn.ds.sort;
 
+import java.util.Random;
+
 public class SorterMain {
 
 	public static void main(String[] args) {
@@ -16,6 +18,13 @@ public class SorterMain {
 		tester.addSorter(new QuickSorter(), "QuickSort");
 		tester.addSorter(new OptimizedQuickSorter(), "OptimizedQuickSort");
 		tester.print(arr);
+		int[] newArr = new int[1000];
+		Random rand = new Random();
+		int len = newArr.length;
+		for (int i = 0; i < len; i++) {
+			newArr[i] = rand.nextInt(len);
+		}
+		tester.print(newArr);
 	}
 
 }

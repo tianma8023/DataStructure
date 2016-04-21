@@ -12,6 +12,11 @@ public class SelectionSorter implements Sorter {
 
 	@Override
 	public int[] sort(int[] arr) {
+		selectSort(arr);
+		return arr;
+	}
+
+	private void selectSort(int[] arr) {
 		int i, j, min;
 		int len = arr.length;
 		for (i = 0; i < len - 1; i++) {
@@ -23,7 +28,6 @@ public class SelectionSorter implements Sorter {
 			if (i != min) // 如果i和min不等，在i之后的数据中找到了最小值，则需要arr[i]于arr[min]进行交换
 				swap(arr, i, min);
 		}
-		return arr;
 	}
 
 }

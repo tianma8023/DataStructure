@@ -17,10 +17,15 @@ package tianma.learn.ds.sort;
  */
 public class ShellSorter implements Sorter {
 
-	// Shell排序的关键就是增量序列的选取：
-	// 增量序列原则： 增量序列的最后一个增量必须等于1
 	@Override
 	public int[] sort(int[] arr) {
+		shellSort(arr);
+		return arr;
+	}
+
+	// Shell排序的关键就是增量序列的选取：
+	// 增量序列原则： 增量序列的最后一个增量必须等于1
+	private void shellSort(int[] arr) {
 		int len = arr.length;
 		int increment = len;
 		for (; increment != 1;) {// 循环直至increment=1
@@ -38,7 +43,6 @@ public class ShellSorter implements Sorter {
 				}
 			}
 		}
-		return arr;
 	}
 
 }

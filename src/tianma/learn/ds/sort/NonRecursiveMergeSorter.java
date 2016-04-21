@@ -12,6 +12,11 @@ public class NonRecursiveMergeSorter extends MergeSorter {
 
 	@Override
 	public int[] sort(int[] arr) {
+		mergeSort(arr);
+		return arr;
+	}
+
+	private void mergeSort(int[] arr) {
 		int len = arr.length;
 		int result[] = new int[len];
 		int k = 1;
@@ -21,7 +26,6 @@ public class NonRecursiveMergeSorter extends MergeSorter {
 			mergePass(result, arr, k); // result归并至arr,此时间隔翻倍
 			k = 2 * k; // 子序列长度加倍
 		}
-		return arr;
 	}
 
 	/**

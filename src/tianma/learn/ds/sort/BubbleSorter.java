@@ -12,6 +12,11 @@ public class BubbleSorter implements Sorter {
 
 	@Override
 	public int[] sort(int[] arr) {
+		bubbleSort(arr);
+		return arr;
+	}
+	
+	protected void bubbleSort(int[] arr) {
 		int i, j;
 		int len = arr.length;
 		for (i = 0; i < len - 1; i++) {
@@ -21,7 +26,6 @@ public class BubbleSorter implements Sorter {
 				}
 			}
 		}
-		return arr;
 	}
 
 }
