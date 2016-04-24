@@ -13,7 +13,7 @@ package tianma.learn.ds.sort;
  * @author Tianma
  *
  */
-public class HeapSort implements Sorter {
+public class HeapSorter implements Sorter {
 
 	@Override
 	public int[] sort(int[] arr) {
@@ -22,31 +22,29 @@ public class HeapSort implements Sorter {
 	}
 
 	private void heapSort(int[] arr) {
-		int len = arr.length;
-		int i;
-		// 将当前序列构成最大堆
-		for (i = len / 2 - 1; i >= 0; i--) {
-			// 由最后一个非叶子节点开始从后往前遍历，将数组后半部分构成最大堆
-			adjustHeap(arr, i, len - 1);
-		}
+
+		buildMaxHeap(arr); // 构建最大堆
 
 		// 将最大堆堆顶元素与数组末尾元素交换，并将前n-1序列重新构造成最大堆,重复n-1次
-		for (i = len - 1; i >= 1; i--) {
+		for (int i = arr.length - 1; i >= 1; i--) {
 			swap(arr, 0, i); // 将堆顶元素和当前未经排序的子序列的最后一个元素进行交换
 			adjustHeap(arr, 0, i - 1); // 将arr[0...i-1](前i个元素)重新调整为最大堆
 		}
 	}
 
 	/**
-	 * 已知数组arr[begin...end]中的记录，除了arr[begin]之外的序列满足最大堆的定义；本方法通过调整关键字arr[begin]，
-	 * 使arr[begin...end]称为一个最大堆；即将数组arr中以begin为起点，以end为终点的子序列变成最大堆
-	 * 
-	 * @param arr
-	 *            参与构造最大堆的序列
-	 * @param begin
-	 *            构造最大堆的起始位置
-	 * @param end
-	 *            构造最大堆的结束位置
+	 * 将指定数组arr构建成最大堆
+	 */
+	private void buildMaxHeap(int[] arr) {
+		int len = arr.length;
+		// 从最后一个非叶子节点往前遍历，将当前序列构成最大堆
+		for (int i = len / 2 - 1; i >= 0; i--) {
+			adjustHeap(arr, i, len - 1);
+		}
+	}
+
+	/**
+	 * 假定arr[begin]的左子树和右子树均满足最大堆，那么调节节点arr[begin]，将以arr[begin]为根节点的二叉树调整为最大堆。
 	 */
 	private void adjustHeap(int[] arr, int begin, int end) {
 		int tmp = arr[begin];
