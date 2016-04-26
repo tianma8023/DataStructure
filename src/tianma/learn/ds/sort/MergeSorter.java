@@ -3,8 +3,8 @@ package tianma.learn.ds.sort;
 /**
  * 归并排序（Merging Sort），采用的基本思想是归并（合并）思想，是一种比较占用内存，但效率高且稳定的算法
  * <p>
- * 原理：假设初始序列为n个记录，则可以看成n个有序的子序列，每个子序列长度为1，然后长度为1的子序列两两归并，得到个长度为2或者1的有序子序列，
- * 然后再两两合并，如此重复，直至得到一个长度为n的有序序列为止。
+ * 原理：假设初始序列为n个记录，则可以看成n个有序的子序列，每个子序列长度为1，然后长度为1的子序列两两归并，得到⌈n/2⌉(⌈x⌉表示不小于
+ * x的最小整数)个长度为2或者1的有序子序列， 然后再两两合并，如此重复，直至得到一个长度为n的有序序列为止。
  * <p>
  * 时间复杂度：O(nlogn)，其最好、最坏、平均性能均为O(nlogn);是一种稳定的排序算法;</br>
  * 空间复杂度：O(n+logn);
@@ -48,7 +48,8 @@ public class MergeSorter implements Sorter {
 	}
 
 	/**
-	 * 将有序的src[start, mid]和有序的src[mid+1, end]合并为有序的des[start,end]
+	 * 将有序的src[start, mid]和有序的src[mid+1, end]合并为有序的des[start,end];
+	 * src可能为乱序数组,但是src[start, mid]和src[mid+1, end]是有序的。
 	 * 
 	 * @param src
 	 *            乱序的原数组
@@ -62,8 +63,10 @@ public class MergeSorter implements Sorter {
 	 *            数组第二部分结束位置
 	 */
 	protected void merge(int[] src, int[] des, int start, int mid, int end) {
-		int i, j, k;
-		// 将较小的数一次移动到目标数组中
+		int i; // src数组第一部分下标
+		int j; // src数组第二部分下标
+		int k; // des数组下标
+		// 将较小的数依次移动到目标数组中
 		for (i = start, k = start, j = mid + 1; i <= mid && j <= end;) {
 			if (src[i] < src[j]) {
 				des[k] = src[i++];
