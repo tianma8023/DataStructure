@@ -2,8 +2,8 @@ package tianma.learn.ds.sort;
 
 /**
  * 快速排序(Quick Sort)<br>
- * 基本思想： 通过一趟排序，将待排序记录分割成独立的两部分，启动一部分的关键字均比另一部分的关键字小，
- * 然后继续对这两部分记录继续进行排序，以达到整个序列有序 <br>
+ * 基本思想： 通过一趟排序，将待排序记录分割成独立的两部分，其中一部分的关键字均比另一部分的关键字小，
+ * 然后对这两部分记录继续进行递归排序，以达到整个序列有序 <br>
  * 时间复杂度：平均时间复杂度为O(nlogn)，最差的时间复杂度为O(n^2)<br>
  * 空间复杂度：平均空间复杂度为O(logn)，最差空间复杂度为O(n)<br>
  * 因为关键字的比较和交换是跳跃进行的，所以快速排序不是稳定的排序方法<br>
@@ -27,12 +27,12 @@ public class QuickSorter implements Sorter {
 	 * @param high
 	 */
 	protected void quickSort(int[] arr, int low, int high) {
-		int pivot;
+		int pivotLoc; // 记录枢轴(pivot)所在位置
 		if (low < high) {
-			pivot = partition(arr, low, high); // 将arr[low...high]一分为二,并计算中心值
+			pivotLoc = partition(arr, low, high); // 将arr[low...high]一分为二,并返回枢轴位置
 
-			quickSort(arr, low, pivot - 1);// 递归遍历arr[low...pivot-1]
-			quickSort(arr, pivot + 1, high); // 递归遍历arr[pivot+1...high]
+			quickSort(arr, low, pivotLoc - 1);// 递归遍历arr[low...pivotLoc-1]
+			quickSort(arr, pivotLoc + 1, high); // 递归遍历arr[pivotLoc+1...high]
 		}
 	}
 

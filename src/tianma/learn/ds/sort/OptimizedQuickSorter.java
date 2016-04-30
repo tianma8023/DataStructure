@@ -2,7 +2,7 @@ package tianma.learn.ds.sort;
 
 /**
  * 快速排序的优化:<br>
- * 1. 优化排序基准(枢轴pivotKey)的选取：(1)选取第一个，(2)随机选取，(3)三值取中：最佳为第三个<br>
+ * 1. 优化排序基准(枢轴pivot)的选取：(1)选取第一个，(2)随机选取，(3)三值取中：最佳为第三个<br>
  * 2. 优化不必要的交换：将交换改为替换<br>
  * 3. 优化小数组时的排序方案：当局部排序数组长度较小时，采用插入排序，而非快速排序，因为长度分割到够小后，继续分割的效率要低于直接插入排序<br>
  */
@@ -27,13 +27,13 @@ public class OptimizedQuickSorter extends QuickSorter {
 	 * @param high
 	 */
 	protected void quickSort(int[] arr, int low, int high) {
-		int pivot;
+		int pivotLoc; // 记录枢轴(pivot)所在位置
 		if ((high - low) > MAX_LENGTH_INSERT_SORT) {
 			// 待排序数组长度大于临界值，则进行快速排序
-			pivot = partition(arr, low, high); // 将arr[low...high]一分为二,并计算中心值
+			pivotLoc = partition(arr, low, high); // 将arr[low...high]一分为二,并返回枢轴位置
 
-			quickSort(arr, low, pivot - 1);// 递归遍历arr[low...pivot-1]
-			quickSort(arr, pivot + 1, high); // 递归遍历arr[pivot+1...high]
+			quickSort(arr, low, pivotLoc - 1);// 递归遍历arr[low...pivotLoc-1]
+			quickSort(arr, pivotLoc + 1, high); // 递归遍历arr[pivotLoc+1...high]
 		} else {
 			// 3. 优化小数组时的排序方案，将快速排序改为插入排序
 			insertSort(arr, low, high); // 对arr[low...high]子序列进行插入排序
@@ -41,8 +41,8 @@ public class OptimizedQuickSorter extends QuickSorter {
 	}
 
 	/**
-	 * 在arr[low...high]选定pivotKey=三值取中作为枢轴（中间位置），将arr[low...high]分成两部分，
-	 * 前半部分的子序列的记录均小于pivotKey，后半部分的记录均大于pivotKey
+	 * 在arr[low...high]选定pivot=三值取中作为枢轴（中间位置），将arr[low...high]分成两部分，
+	 * 前半部分的子序列的记录均小于pivot，后半部分的记录均大于pivot
 	 * 
 	 * @param arr
 	 * @param low
@@ -50,26 +50,26 @@ public class OptimizedQuickSorter extends QuickSorter {
 	 * @return
 	 */
 	protected int partition(int[] arr, int low, int high) {
-		int pivotKey;
-		pivotKey = medianOfThree(arr, low, high); // 1. 优化排序基准，使用三值取中获取中值
+		int pivot;
+		pivot = medianOfThree(arr, low, high); // 1. 优化排序基准，使用三值取中获取中值
 		while (low < high) { // 从数组的两端向中间扫描
-			while (low < high && arr[high] >= pivotKey) {
+			while (low < high && arr[high] >= pivot) {
 				high--;
 			}
-			// swap(arr, low, high); // 将比枢轴pivotKey小的元素交换到低位
+			// swap(arr, low, high); // 将比枢轴pivot小的元素交换到低位
 			arr[low] = arr[high]; // 3. 优化不必要的交换，使用替换而不是交换
-			while (low < high && arr[low] <= pivotKey) {
+			while (low < high && arr[low] <= pivot) {
 				low++;
 			}
-			// swap(arr, low, high); // 将比枢轴pivotKey大的元素交换到高位
+			// swap(arr, low, high); // 将比枢轴pivot大的元素交换到高位
 			arr[high] = arr[low]; // 3. 优化不必要的交换，使用替换而不是交换
 		}
-		arr[low] = pivotKey;
-		return low; // 返回一趟下来后枢轴pivotKey所在的位置
+		arr[low] = pivot;
+		return low; // 返回一趟下来后枢轴pivot所在的位置
 	}
 
 	/**
-	 * 通过三值取中(从arr[low...high]子序列中)获取枢轴pivotKey的值，让arr[low]变成中值
+	 * 通过三值取中(从arr[low...high]子序列中)获取枢轴pivot的值，让arr[low]变成中值
 	 * 
 	 * @param arr
 	 * @param low
