@@ -21,10 +21,6 @@ public class QuickSorter implements Sorter {
 
 	/**
 	 * 对数组arr[low...high]的子序列作快速排序，使之有序
-	 * 
-	 * @param arr
-	 * @param low
-	 * @param high
 	 */
 	protected void quickSort(int[] arr, int low, int high) {
 		int pivotLoc; // 记录枢轴(pivot)所在位置
@@ -38,12 +34,7 @@ public class QuickSorter implements Sorter {
 
 	/**
 	 * 在arr[low...high]选定pivot=arr[low]作为枢轴（中间位置），将arr[low...high]分成两部分，
-	 * 前半部分的子序列的记录均小于pivot，后半部分的记录均大于pivot
-	 * 
-	 * @param arr
-	 * @param low
-	 * @param high
-	 * @return
+	 * 前半部分的子序列的记录均小于pivot，后半部分的记录均大于pivot;最后返回pivot的位置
 	 */
 	protected int partition(int[] arr, int low, int high) {
 		int pivot;
