@@ -84,7 +84,7 @@ public class StringMatchSample {
 			// 如果不相等,则继续递归前缀索引,令 k=next[k],继续判断,直至k=-1(即k=next[0])或者p[j]=p[k]为止
 			int pLen = p.length;
 			int[] next = new int[pLen];
-			int k = 0;
+			int k = -1;
 			int j = 0;
 			next[0] = -1; // next数组中next[0]为-1
 			while (j < pLen - 1) {
@@ -140,7 +140,7 @@ public class StringMatchSample {
 			// 如果不相等,则继续递归前缀索引,令 k=next[k],继续判断,直至k=-1(即k=next[0])或者p[j]=p[k]为止
 			int pLen = p.length;
 			int[] next = new int[pLen];
-			int k = 0;
+			int k = -1;
 			int j = 0;
 			next[0] = -1; // next数组中next[0]为-1
 			while (j < pLen - 1) {
